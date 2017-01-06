@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/move2left.css" />
+
+</head>
+
+<body>
+<div id="imgView">
+	<div id="imgContainer">
+    	<div style="width:2006px; height:354px;">
+            <div id="img1" class="imgItem"></div>
+            <div id="img2" class="imgItem"></div>
+        </div>
+    </div>
+    <div id="imgBtn">
+    	<ul id="imgBtnList">
+        </ul>
+    </div>
+</div>
+<div id="aa"></div>
+<script type="text/javascript">
+var arr_imgs = ["1.jpg","2.jpg","3.jpg","2.jpg"];	//待轮换的图片
+var img_width = 1003;	//图片宽度
+var img_path = "images/";	//图片路径
+var active_imgBtn = "active.png";	//被显示时的图片
+var normal_imgBtn = "normal.png";	//未被显示时的图片
+var curr_index = 0;
+var timer1;
+var timer2;
+var isSel = false;
+function init(){
+	document.getElementById("img1").style.backgroundImage = "url(" + img_path + arr_imgs[0] + ")";
+	var ibl = document.getElementById("imgBtnList");
+	for(var i in arr_imgs){
+		var bg_img;
+		if(i == 0){
+			bg_img = img_path + active_imgBtn;
+		} else {
+			bg_img = img_path + normal_imgBtn;
+		}
+		var img_li = "<li id=\"mapping_" + i + "\" style=\"background-image:url(" + bg_img + ");\" onmouseover=\"selImg(this)\" onmouseout=\"unselImg(this)\"></li>";
+		ibl.innerHTML += img_li;
+	}
+}
+function selImg(obj){
+	isSel = true;
+	clearTimeout(timer1);
+	clearTimeout(timer2);
+	document.getElementById("mapping_"+curr_index).style.backgroundImage="url("+img_path + normal_imgBtn+")";
+	obj.style.backgroundImage="url("+img_path + active_imgBtn+")";
+	var obj_id = obj.getAttribute("id");
+	curr_index = obj_id.substring(obj_id.indexOf("_")+1);
+	document.getElementById("img1").style.backgroundImage = "url(" + img_path + arr_imgs[curr_index] + ")";
+	document.getElementById("imgContainer").scrollLeft = 0;
+}
+function unselImg(obj){
+	isSel = false;
+	start();
+}
+function start(){
+	timer1 = setTimeout(move,3000);
+}
+function move(){
+	clearTimeout(timer1);
+	document.getElementById("mapping_"+curr_index).style.backgroundImage="url("+img_path + normal_imgBtn+")";
+	curr_index = ++curr_index >= arr_imgs.length ? 0 : curr_index;
+	document.getElementById("img2").style.backgroundImage = "url(" + img_path + arr_imgs[curr_index] + ")";
+	document.getElementById("mapping_"+curr_index).style.backgroundImage="url("+img_path + active_imgBtn+")";
+	if(!isSel){
+		timer2 = setInterval(startMove,10);
+	}
+}
+function startMove(){
+	var offsetLeft = document.getElementById("imgContainer").scrollLeft;
+	if(offsetLeft >= img_width){
+		document.getElementById("img1").style.backgroundImage = "url(" + img_path + arr_imgs[curr_index] + ")";
+		document.getElementById("imgContainer").scrollLeft = 0;
+		clearTimeout(timer2);
+		timer1 = setTimeout(move,3000);
+	} else {
+		var t = (img_width - offsetLeft)/7;
+		t = t < 1 ? 1 : t;
+		/*if(offsetLeft + 10 > img_width){
+			document.getElementById("imgContainer").scrollLeft++;
+		}else{*/
+			document.getElementById("imgContainer").scrollLeft+=t;
+		//}
+	}
+}
+init();
+start();
+</script>
+</body>
+</html>

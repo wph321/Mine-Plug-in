@@ -1,0 +1,7 @@
+body,div,img{ padding:0; margin:0; border:0;}
+
+.w{ width:448px; height:130px; margin:0 auto; overflow:hidden;}
+.c{ width:1792px; height:130px; overflow:hidden;}
+#c1,#c2{ width:896px; height:130px; overflow:hidden; float:left;}
+.c img{ margin-left:2px;}
+

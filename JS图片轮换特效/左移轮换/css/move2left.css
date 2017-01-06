@@ -1,0 +1,7 @@
+body,div,ul,li{ margin:0px; padding:0px;}
+#imgView{ width:1003px; height:354px; margin:0px auto; position:relative;}
+#imgView #imgContainer{ width:1003px; height:354px; overflow:hidden;}
+#imgView #imgContainer .imgItem{ width:1003px; height:354px; float:left;}
+#imgView #imgBtn{ width:1003px; height:17px; padding:20px 0px; position:absolute; top:297px; filter:alpha(opacity=50); opacity:0.5; background:#000;}
+#imgView #imgBtn ul{ list-style:none; position:absolute; right:50px;}
+#imgView #imgBtn ul li{ width:52px; height:17px; margin:0px 10px; float:left;}

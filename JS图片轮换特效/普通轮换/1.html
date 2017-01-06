@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="styles/1.css"/>
+<script type="text/javascript" language="javascript">
+var timer = null;//定时器对象
+var imgBasePath = 'imgs/';//图片基础路径
+var imgArr = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg'];//图片数组
+var numArr = null;//用于显示序号的span数组
+var index = 0;//当前下标
+//初始化数据的方法
+function ready(){
+	adv.src = imgBasePath + imgArr[index];
+	var s = '';
+	for(var i = 0; i < imgArr.length; i++){
+		if(i == index){
+			s += "<span class='active' onmouseover='span_over(this)' onmouseout='startRotate()'>"+(i+1)+"</span>";
+		} else {
+			s += "<span class='wait' onmouseover='span_over(this)' onmouseout='startRotate()'>"+(i+1)+"</span>";
+		}
+	}
+	n.innerHTML = s;
+	numArr = n.getElementsByTagName("span");
+	startRotate();
+}
+function showAdv(){
+	//修改广告图片
+	adv.src = imgBasePath + imgArr[index];
+	//将所有的数字样式都修改为等待状态的样式
+	for(var i=0;i<numArr.length;i++){
+		numArr[i].className = "wait";
+	}
+	//将当前图片对应的数字修改为激活状态的样式
+	numArr[index].className = "active";
+}
+function rotate(){
+	index++;
+	if(index >= imgArr.length){
+		index = 0;
+	}
+	showAdv();
+}
+function startRotate(){
+	timer = setInterval(rotate,2000);
+}
+function pauseRotate(){
+	clearInterval(timer);
+}
+function span_over(s){
+	pauseRotate();
+	index = s.innerHTML - 1;
+	showAdv();
+}
+</script>
+</head>
+
+<body onload="ready()">
+<div class="w">
+	<img id="adv" src="" width="540" height="312" />
+    <div id="n" class="n"></div>
+</div>
+</body>
+</html>

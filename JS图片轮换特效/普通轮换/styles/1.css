@@ -1,0 +1,8 @@
+body,div,img,span{ padding:0; margin:0;}
+
+.w{ width:540px; height:312px; position:relative; margin:0 auto;}
+.n{ width:540px; height:40px; background-color:#FFF; filter:alpha(opacity=60); opacity:0.6; position:absolute; bottom:0; text-align:right;}
+.n span{ width:20px; height:20px; line-height:20px; text-align:center; font-size:14px; margin-top:10px; margin-right:5px; display:inline-block; cursor:pointer;}
+.n span.active{ color:#FFF; background-color:#F63; font-weight:bold;}
+.n span.wait{ color:#FFF; background-color:#000;}
+

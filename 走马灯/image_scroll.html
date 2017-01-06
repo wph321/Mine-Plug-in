@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+<script type="text/javascript" language="javascript">
+var timer = null;
+function ready(){
+	document.getElementById("c2").innerHTML = document.getElementById("c1").innerHTML;
+	var imgs = document.getElementsByTagName("img");
+	for(var i = 0; i < imgs.length; i++){
+		imgs[i].onmouseover = scroll_end;
+		imgs[i].onmouseout = scroll_start;
+	}
+	scroll_start();
+}
+
+function img_scroll(){
+	if(w.scrollLeft < 896){
+		w.scrollLeft++;
+	} else {
+		w.scrollLeft = 0;
+	}
+}
+function scroll_start(){
+	timer = setInterval(img_scroll,10);
+}
+function scroll_end(){
+	clearInterval(timer);
+}
+
+</script>
+</head>
+
+<body onload="ready();">
+<div id="w" class="w">
+	<div id="c" class="c">
+    	<div id="c1">
+        	<img src="images/1.png" width="110" height="135" /><img src="images/2.png" width="110" height="135" /><img src="images/3.png" width="110" height="135" /><img src="images/4.png" width="110" height="135" /><img src="images/5.png" width="110" height="135" /><img src="images/6.png" width="110" height="135" /><img src="images/7.png" width="110" height="135" /><img src="images/8.png" width="110" height="135" />
+        </div>
+        <div id="c2"></div>
+    </div>
+</div>
+</body>
+</html>

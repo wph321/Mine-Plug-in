@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#o { top:210px; left:300px}
+#t { top:210px; left:335px}
+#e { top:210px; left:370px}
+#iimg{width:400px; height:240px; border:#09F solid 1px; }
+.btn{cursor:hand; width:31px; height:27px; background-image:url(images/btn-blue.gif); position:absolute; line-height:27px; text-align:center}
+</style>
+<SCRIPT src="jquery.js"></SCRIPT>
+<SCRIPT>
+var num=1;
+var time;
+$(document).ready(function(){imgchange();$(".btn").bind("mouseout", function(){time=setTimeout("imgchange()",1500);});});
+var imgg=new Array();
+imgg[1]="e";imgg[2]="o";imgg[3]="t";
+function imgchange()
+{	
+	$(".btn").css("background-image","url(images/btn-blue.gif)");	
+	$("#iimg").css("background-image","url(images/"+imgg[num]+".jpg)");
+	$("#"+imgg[num]+"").css("background-image","url(images/btn-green.gif)");	
+	num++;
+	if(num==4){num=1;}
+	time=setTimeout("imgchange()",1500);
+}
+
+function changeimg(id)
+{
+	clearTimeout(time);
+	$(".btn").css("background-image","url(images/btn-blue.gif)");
+	$("#"+id+"").css("background-image","url(images/btn-green.gif)");
+	$("#iimg").fadeOut("slow",function(){$("#iimg").css("background-image","url(images/"+id+".jpg)");});
+	$("#iimg").fadeIn("slow");								 
+}
+
+</SCRIPT>
+</head>
+<body>
+<div class="btn" id="o" onmouseover="changeimg(id)">1</div>
+<div class="btn" id="t" onmouseover="changeimg(id)">2</div>
+<div class="btn" id="e" onmouseover="changeimg(id)">3</div>
+<div id="iimg"></div>
+</body>
+</html>

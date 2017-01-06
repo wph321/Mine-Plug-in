@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>jQuery 产品图片局部放大展示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/jqzoom.css" />
+<script src="js/jQuery-1.3.2.js" language="javascript" type="text/javascript"></script>
+<script src="js/newegg.jqzoom.js" language="javascript" type="text/javascript"></script>
+<script src="js/WebApplication.js" language="javascript" type="text/javascript"></script>
+<script src="js/BizProduct090713.js" language="javascript" type="text/javascript"></script>
+<script src="js/BizCommon090801.js" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<p>温馨提示：图片比较大，下载慢点。。耐心点哈。。
+<div class="introShow">
+  <div class="mainShow"><a id="bigImg" href="images/01.jpg" class="jqzoom" onclick="Biz.Common.OpenWindow.ShowPicture2('http://www.jb51.net')"><img id="midImg" src="images/01.jpg" class="Picture220"/></a></div>
+  <div class="scroll" id="scroll"><a href="#prev" class="prevView prevStop" ><span>显示上一幅图片</span></a>
+    <ul id="thumList">
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/01.jpg" alt="" ref1="images/01.jpg" ref2="images/01.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/02.jpg" alt="" ref1="images/02.jpg" ref2="images/02.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture42"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/03.jpg" alt="" ref1="images/03.jpg" ref2="images/03.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/04.jpg" alt="" ref1="images/04.jpg" ref2="images/04.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/05.jpg" alt="" ref1="images/05.jpg" ref2="images/05.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/06.jpg" alt="" ref1="images/06.jpg" ref2="images/06.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/07.jpg" alt="" ref1="images/07.jpg" ref2="images/07.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+      <li class="moveUnit"><a href="javascript:void(0)" title="" class="currentItem"><img src="images/08.jpg" alt="" ref1="images/08.jpg" ref2="images/08.jpg" onmouseover="Biz.Product.Product.ChangePic(this);" class="Picture40"/></a></li>
+    </ul>
+    <a href="#next" class="nextView nextStop" ><span>显示下一幅图片</span></a></div>
+</div>
+<script type="text/javascript" language="jscript">
+var productUrl='http://www.jb51.net/index.html';
+
+jQuery(function($) {
+    Biz.Product.Product.turn();
+    Biz.Product.Product.turn2();
+    Biz.Common.TabCtrl.tabs("tab");
+	Biz.Common.TabCtrl.tabs("tempTab");
+	Biz.Common.MoveCtrl.iniUnit('scroll', 'thumList', 4, 1);
+	Biz.Common.MoveCtrl.iniUnit('gift', 'gift_1', 3, 1);
+    Biz.Common.MoveCtrl.iniUnit('congener', 'congener_1', 3, 1);
+    Biz.Common.TableCtrl.odd();	
+    Biz.Product.Product.InitSpecialTable();
+    Biz.Product.Product.InitAlsoBuy();
+
+	//Click out event!
+	$("#backgroundPopup").click(function(){
+		Biz.Common.PopCtrl.disablePopup();
+		});
+		
+	//Press Escape event!
+	$(document).keypress(function(e){
+		if(e.keyCode==27 && popupStatus==1){
+			Biz.Common.PopCtrl.disablePopup();
+		}
+	});
+	
+    var options = {
+    zoomWidth: 300,
+    zoomHeight: 250,
+        xOffset: 20,
+        yOffset: -15,
+        title : false,
+		showEffect:"fadein",
+		hideEffect:"fadeout",
+        position: "right" 
+	}
+	$(".jqzoom").jqzoom(options);
+	
+	Biz.Product.ProductDetail.Delay('44891','源码爱好者');
+}); 
+</script>
+</div>
+</body>
+</html>

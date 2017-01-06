@@ -1,0 +1,8 @@
+body,div,ul,li{ padding:0; margin:0;}
+ul,li{ list-style:none;}
+
+.d1{ width:600px; height:30px; border:1px solid #CCC; margin:0 auto; margin-top:50px;}
+.d2{ width:600px; height:30px; border:1px solid #CCC; margin:0 auto; position:fixed;}
+ul li{ float:left; border-right:1px solid #CCC; height:30px; width:100px; line-height:30px; font-size:14px; font-weight:bold; text-align:center;}
+ul li.f{ background-color:#DDD;}
+.b{ height:1900px;}

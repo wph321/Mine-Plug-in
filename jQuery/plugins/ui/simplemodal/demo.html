@@ -1,0 +1,61 @@
+<html>
+<head>
+<link rel='stylesheet' type='text/css' media='screen' href='basic.css' />
+<link rel='stylesheet' type='text/css' media='screen' href='contact.css' />
+<link rel='stylesheet' type='text/css' media='screen' href='confirm.css' />
+<!-- IE 6 hacks -->
+<!--[if lt IE 7]>
+<link rel='stylesheet' type='text/css' media='screen' href='basic_ie.css' />
+<![endif]-->
+<script language='javascript' type='text/javascript' src='../../../src/jquery-1.3.2.min.js'></script>
+<script language='javascript' type='text/javascript' src='jquery.simplemodal-1.3.min.js'></script>
+<script language='javascript' type='text/javascript' src='basic.js'></script>
+<script language='javascript' type='text/javascript' src='contact.js'></script>
+<script language='javascript' type='text/javascript' src='confirm.js'></script>
+<script language='javascript' type='text/javascript'>
+
+</script>
+<title></title>
+</head>
+<body>
+<div id='basicModal'><h2>Basic Modal Dialog</h2>
+<p>A basic modal dialog with minimal styling and without any additional settings. There are a few CSS attributes set internally by SimpleModal, however, SimpleModal relies mostly on external CSS for the look and feel.</p>
+<input type='button' name='basic' value='Demo' class='basic demo'/> or <a href='#' class='basic'>Demo</a>
+</div>
+<div id="basicModalContent" style='display:none'>
+	<h1>Basic Modal Dialog</h1>
+
+	<p>For this demo, SimpleModal is using this "hidden" data for its content. You can also populate the modal dialog with standard HTML or with DOM element(s).</p>
+	<p>Examples:</p>
+	<p><code>$('#basicModalContent').modal(); // jQuery object; this demo</code></p>
+	<p><code>$.modal(document.getElementById('basicModalContent')); // DOM</code></p>
+	<p><code>$.modal('&lt;p&gt;&lt;b&gt;HTML&lt;/b&gt; elements&lt;/p&gt;'); // HTML</code></p>
+
+	<p><a href='http://www.ericmmartin.com/projects/simplemodal'>More details...</a></p>
+</div>
+
+<br />
+
+<div id='contactForm'><h2>Contact Form</h2>
+<p>A contact form built on SimpleModal. Demonstrates the use of the <code>onOpen</code>, <code>onShow</code> and <code>onClose</code> callbacks, as well as the use of Ajax with SimpleModal.</p>
+<p>To use: Open <code>data/contact.php</code> and modify the <code>$to</code> and <code>$subject</code> values. To enable/disable information about the user, configure the <code>$extra</code> array.</p>
+<input type='button' name='contact' value='Demo' class='contact demo'/> or <a href='#' class='contact'>Demo</a>
+</div>
+
+<br />
+
+<div id='confirmDialog'><h2>Confirm Override</h2>
+	<p>A modal dialog override of the JavaScript confirm function. Demonstrates the use of <code>onShow</code> as well as how to display a modal dialog confirmation instead of the default JavaScript confirm dialog.</p>
+		<input type='button' name='confirm' value='Demo' class='confirm demo'/> or <a href='#' class='confirm'>Demo</a>
+	</form>
+</div>
+<div id='confirm' style='display:none'>
+	<a href='#' title='Close' class='modalCloseX simplemodal-close'>x</a>
+	<div class='header'><span>Confirm</span></div>
+	<p class='message'></p>
+	<div class='buttons'>
+	<div class='no simplemodal-close'>No</div><div class='yes'>Yes</div>
+</div>
+
+</body>
+</html>

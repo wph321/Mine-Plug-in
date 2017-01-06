@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+<script type="text/javascript" language="javascript">
+var t = 0;
+var w = 0;
+var l = 0;
+function ready(){
+	t = document.getElementById("d1").offsetTop;
+	w = document.getElementById("d1").offsetWidth;
+	l = document.getElementById("d1").offsetLeft;
+}
+function hover(){
+	var st = document.documentElement.scrollTop;
+	if(st>=t){
+		document.getElementById("d1").className="d2";
+		document.getElementById("d1").style.left=l+"px";
+	} else {
+		document.getElementById("d1").className="d1";
+	}
+}
+function calcLeft(){
+	var cw = document.body.clientWidth;
+	var cl = (cw-w)/2;
+	l = cl;
+	document.getElementById("d1").style.left=l+"px";
+}
+window.onscroll = hover;
+window.onresize = calcLeft;
+</script>
+</head>
+
+<body onload="ready()">
+<div id="d1" class="d1">
+	<ul>
+    	<li class="f">宝贝详情</li>
+    	<li>评价详情</li>
+    	<li>成交记录</li>
+    </ul>
+</div>
+<div class="b"></div>
+</body>
+</html>

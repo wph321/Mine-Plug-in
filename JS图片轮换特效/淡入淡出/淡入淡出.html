@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/in_out.css" />
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+var arr_imgs = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+$(document).ready(function(){
+	var timer;
+	var index = 0;
+	function fun(obj){
+		clearTimeout(timer);//清除定时器（必须）
+		$("#image").stop();//清除当前动画（必须）
+		$("#img_"+index).attr("class","reduceImg unselectImg");//将当前图片的缩略图设为未选中样式
+		obj.attr("class","reduceImg selectImg");//将选中的缩略图设为选中样式
+		var path = obj.attr("src");
+		var currentImg = path.substring(path.lastIndexOf("/")+1);
+		$("#image").attr("src","imgs/"+currentImg);//设置要显示的图片
+		$("#image").fadeTo(500,1);//淡入图片
+		for(var i=0; i < arr_imgs.length; i++){//将index设置为当前显示图片的下标
+			if(arr_imgs[i] == currentImg){
+				index = i;
+				break;
+			}
+		}
+	}
+	for(var i=0; i < arr_imgs.length; i++){//初始化缩略图
+		var imgSrc = "imgs/"+arr_imgs[i];
+		var imgTag = "<img id=\"img_"+i+"\" ";
+		if(i==0){//第一张缩略图默认为选中样式
+			imgTag += "class=\"reduceImg selectImg\"";
+		}else{//其余缩略图默认为未选中样式
+			imgTag += "class=\"reduceImg unselectImg\"";
+		}
+		imgTag += " src=\""+imgSrc+"\" />";
+		$("#imglist").append(imgTag);//将缩略图添加到imglist元素中
+		$("#img_"+i).mouseover(function (){//设置缩略图鼠标悬停事件
+			fun($(this));
+		});
+		$("#img_"+i).mouseout(function (){//设置缩略图鼠标移出事件
+			start();
+		});
+	}
+	start();//开启效果
+	function start(){
+		timer = setTimeout(imgOut,3000);//每张图片停留2秒，然后轮换
+	}
+	function imgChange(){//改换图片
+		index = ++index >= arr_imgs.length ? 0 : index;
+		$("#image").attr("src","imgs/"+arr_imgs[index]);
+	}
+	function imgOut(){
+		$("#image").fadeTo(1500,0.05,imgIn);//淡出图片，在淡出后调用imgIn方法淡入图片
+	}
+	function imgIn(){
+		$("#img_"+index).attr("class","reduceImg unselectImg");//设置淡出图片的缩略图样式
+		imgChange();//改换图片
+		$("#img_"+index).attr("class","reduceImg selectImg");//设置淡入图片的缩略图样式
+		$("#image").fadeTo(1500,1,start);//淡入图片，在淡入后继续调用start方法，以达到循环效果
+	}
+});
+</script>
+</head>
+
+<body>
+<ul id="container">
+	<li><img id="image" src="imgs/1.jpg" /><li>
+	<li id="diaphaneity"></li>
+    <li id="imglist"></li>
+</ul>
+</body>
+</html>
